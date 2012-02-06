@@ -30,7 +30,12 @@ echo "\033[0;34mCopying your current PATH and adding it to the end of ~/.zshrc f
 echo "export PATH=$PATH" >> ~/.zshrc
 
 echo "\033[0;34mTime to change your default shell to zsh!\033[0m"
-chsh -s `which zsh`
+if [ `uname` == 'SunOS' ]
+then
+	echo `which zsh` | passwd -e `whoami`
+else
+	chsh -s `which zsh`
+fi
 
 echo "\033[0;32m"'         __                                     __   '"\033[0m"
 echo "\033[0;32m"'  ____  / /_     ____ ___  __  __   ____  _____/ /_  '"\033[0m"
