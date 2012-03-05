@@ -2,6 +2,9 @@
 # ZSH Theme - Preview: http://gyazo.com/8becc8a7ed5ab54a0262a470555c3eed.png
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
+# Can use the following under oh-my-zsh to get a list of colors:
+#   spectrum_ls | less -R
+
 #Build user@host string
 local user_host="$terminfo[bold]$fg[green]%n" # user
 user_host="$user_host$FG[238]@"               # @
