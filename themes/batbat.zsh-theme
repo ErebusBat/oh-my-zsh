@@ -6,7 +6,10 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 #   spectrum_ls | less -R
 
 #Build user@host string
-local user_host="$terminfo[bold]$fg[green]%n" # user
+if [[ $EUID -eq 0 ]]
+then local user_host="$terminfo[bold]$fg[red]%n"   # user (root)
+else local user_host="$terminfo[bold]$fg[grenn]%n" # user
+fi
 user_host="$user_host$FG[238]@"               # @
 if [[ -f ~/.zsh-host-color ]]
 then local host_color=`cat ~/.zsh-host-color`
