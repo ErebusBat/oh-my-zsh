@@ -2,7 +2,15 @@
 # ZSH Theme - Preview: http://gyazo.com/8becc8a7ed5ab54a0262a470555c3eed.png
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
-local user_host='%{$terminfo[bold]$fg[green]%}%n@%m%{$reset_color%}'
+#Build user@host string
+local user_host="$terminfo[bold]$fg[green]%n" # user
+user_host="$user_host$FG[238]@"               # @
+if [[ -f ~/.zsh-host-color ]]
+then local host_color=`cat ~/.zsh-host-color`
+else local host_color=010   # 010 == $fg[green]
+fi
+user_host="$user_host$FG[$host_color]%m$reset_color"  # host
+
 local current_dir='%{$terminfo[bold]$fg[blue]%} %~%{$reset_color%}'
 local git_branch='$(git_prompt_info)%{$reset_color%}'
 
