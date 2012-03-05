@@ -4,8 +4,13 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
 local user_host='%{$terminfo[bold]$fg[green]%}%n@%m%{$reset_color%}'
 local current_dir='%{$terminfo[bold]$fg[blue]%} %~%{$reset_color%}'
-local rvm_ruby='%{$fg[red]%}‹$(rvm-prompt i v g)›%{$reset_color%}'
 local git_branch='$(git_prompt_info)%{$reset_color%}'
+
+# Display RVM info if available
+if which rvm-prompt 1> /dev/null
+then local rvm_ruby='%{$fg[red]%}‹$(rvm-prompt i v g)›%{$reset_color%}'
+else local rvm_ruby=''
+fi
 
 # Rails Environment
 # local r_env='$FG[201]$(echo $RAILS_ENV)$reset_color'
