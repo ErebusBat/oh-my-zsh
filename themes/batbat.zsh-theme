@@ -19,12 +19,7 @@ user_host="$user_host$FG[$host_color]%m$reset_color"  # host
 
 local current_dir='%{$terminfo[bold]$fg[blue]%} %~%{$reset_color%}'
 local git_branch='$(git_prompt_info)%{$reset_color%}'
-
-# Display RVM info if available
-if which rvm-prompt 1> /dev/null
-then local rvm_ruby='%{$fg[red]%}‹$(rvm-prompt i v g)›%{$reset_color%}'
-else local rvm_ruby=''
-fi
+local rvm_ruby='%{$fg[red]%}‹$(rvm-prompt i v g)›%{$reset_color%}'
 
 # Rails Environment
 # local r_env='$FG[201]$(echo $RAILS_ENV)$reset_color'
