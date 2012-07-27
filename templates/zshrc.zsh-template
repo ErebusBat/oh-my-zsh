@@ -31,6 +31,13 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
 
+if [ `uname` = "Linux" ]; then
+  # Include system profile so we get RVM and what nots
+  # but only on Linux, not darwin
+  source /etc/profile
+fi
+
+# Main OH-MY-ZSH library
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
